@@ -1,49 +1,43 @@
 /* =========================
-   🌲 FOREST BACKGROUND
+   🌲 FULL FOREST BACKGROUND
 ========================= */
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
   margin: 0;
-  min-height: 100vh;
-  font-family: 'Shadows Into Light', cursive;
+}
+
+body {
+  background-image: url("./assets/images/enchanted-gate.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   color: #f5e6c8;
+  font-family: 'Shadows Into Light', cursive;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-/* Full-page forest image */
-.forest-bg {
-  position: fixed;
-  inset: 0;
-  background: url("./assets/images/enchanted-gate.png") center / cover no-repeat;
-  z-index: 0;
-}
-
 /* =========================
-   🚪 THE GATE
+   🚪 THE GATE CARD
 ========================= */
 
 .gate-container {
   position: relative;
   z-index: 2;
-
   text-align: center;
+
   border: 2px solid #e3c76a;
   padding: 3.2rem 2.75rem;
   max-width: 420px;
-  margin: auto;
 
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(180, 140, 255, 0.2),
-      transparent 60%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(35, 20, 55, 0.95),
-      rgba(15, 8, 25, 0.98)
-    );
-
+  background: rgba(20, 10, 30, 0.75);
   backdrop-filter: blur(6px);
 
   box-shadow:
@@ -52,10 +46,6 @@ body {
 
   border-radius: 18px;
 }
-
-/* =========================
-   ✨ TEXT & BUTTON
-========================= */
 
 .gate-title {
   font-size: 2.2rem;
@@ -75,16 +65,15 @@ body {
   padding: 0.75rem 1.75rem;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .enter-gate:hover {
   background: #c9a24d;
-  color: #6d3499;
+  color: #3b1c5a;
 }
 
 /* =========================
-   ✨ FAIRY FIELD
+   ✨ FAIRIES
 ========================= */
 
 .fairy-field {
@@ -92,12 +81,7 @@ body {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  overflow: hidden;
 }
-
-/* =========================
-   🧚 FAIRIES
-========================= */
 
 .fairy {
   position: absolute;
@@ -106,242 +90,21 @@ body {
   height: 10px;
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    #ffffff 0%,
-    #e6d7ff 40%,
-    rgba(180,140,255,0.5) 65%,
-    transparent 75%
-  );
+  background: radial-gradient(circle, #fff, #e6d7ff 40%, transparent 70%);
+  box-shadow: 0 0 12px rgba(220,190,255,1);
 
-  box-shadow:
-    0 0 12px rgba(220,190,255,1),
-    0 0 26px rgba(180,240,220,0.75),
-    0 0 46px rgba(200,160,255,0.45);
-
-  animation:
-    fairyFloat linear infinite,
-    fairyWobble 5s ease-in-out infinite,
-    fairyPulse 3s ease-in-out infinite;
+  animation: fairyFloat linear infinite;
 }
-
-/* Wings */
-
-.fairy::before,
-.fairy::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 14px;
-  height: 8px;
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(230,210,255,0.9),
-    rgba(180,140,255,0.45),
-    transparent 70%
-  );
-
-  transform-origin: center;
-  opacity: 0.85;
-  animation: wingFlutter 1.4s ease-in-out infinite;
-}
-
-.fairy::before { left: -12px; transform: rotate(-30deg); }
-.fairy::after  { right: -12px; transform: rotate(30deg); }
-
-/* =========================
-   🌀 ANIMATIONS
-========================= */
 
 @keyframes fairyFloat {
-  0% { top: -20vh; opacity: 0; }
+  from { top: -20vh; opacity: 0; }
   15% { opacity: 1; }
-  100% { top: 110vh; opacity: 0; }
+  to { top: 110vh; opacity: 0; }
 }
 
-@keyframes fairyWobble {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-22px); }
-  50% { transform: translateX(22px); }
-  75% { transform: translateX(-14px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes fairyPulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-@keyframes wingFlutter {
-  0%, 100% {
-    transform: scaleX(0.8) scaleY(0.9);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scaleX(1.3) scaleY(1.1);
-    opacity: 1;
-  }
-}
-
-/* =========================
-   🎲 FAIRY POSITIONS
-========================= */
-
-.fairy:nth-child(1) { left: 8%;  animation-duration: 16s; }
-.fairy:nth-child(2) { left: 18%; animation-duration: 22s; animation-delay: 2s; }
-.fairy:nth-child(3) { left: 30%; animation-duration: 14s; animation-delay: 5s; }
-.fairy:nth-child(4) { left: 42%; animation-duration: 20s; animation-delay: 1s; }
-.fairy:nth-child(5) { left: 55%; animation-duration: 17s; animation-delay: 3s; }
-.fairy:nth-child(6) { left: 68%; animation-duration: 24s; animation-delay: 6s; }
-.fairy:nth-child(7) { left: 80%; animation-duration: 15s; animation-delay: 4s; }
-.fairy:nth-child(8) { left:
-  opacity: 0.9;
-}
-
-.enter-gate {
-  background: transparent;
-  border: 2px solid #c9a24d;
-  color: #c9a24d;
-  padding: 0.75rem 1.75rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.enter-gate:hover {
-  background: #c9a24d;
-  color: #6d3499;
-}
-
-/* =========================
-   ✨ FAIRY FIELD
-========================= */
-
-.fairy-field {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* =========================
-   🧚 FAIRY BODY
-========================= */
-
-.fairy {
-  position: absolute;
-  top: 110vh;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    #ffffff 0%,
-    #e6d7ff 40%,
-    rgba(180,140,255,0.5) 65%,
-    transparent 75%
-  );
-
-  box-shadow:
-    0 0 12px rgba(220,190,255,1),
-    0 0 26px rgba(180,240,220,0.75),
-    0 0 46px rgba(200,160,255,0.45);
-
-  animation:
-    fairyFloat linear infinite,
-    fairyWobble 5s ease-in-out infinite,
-    fairyPulse 3s ease-in-out infinite;
-}
-
-/* =========================
-   🪽 WINGS
-========================= */
-
-.fairy::before,
-.fairy::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 14px;
-  height: 8px;
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(230,210,255,0.9),
-    rgba(180,140,255,0.45),
-    transparent 70%
-  );
-
-  transform-origin: center;
-  opacity: 0.85;
-  animation: wingFlutter 1.4s ease-in-out infinite;
-}
-
-.fairy::before {
-  left: -12px;
-  transform: rotate(-30deg);
-}
-
-.fairy::after {
-  right: -12px;
-  transform: rotate(30deg);
-}
-
-/* =========================
-   🌀 ANIMATIONS
-========================= */
-
-@keyframes fairyFloat {
-  0% {
-    top: -20vh;
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    top: 110vh;
-    opacity: 0;
-  }
-}
-
-
-@keyframes fairyWobble {
-  0%   { transform: translateX(0); }
-  25%  { transform: translateX(-22px); }
-  50%  { transform: translateX(22px); }
-  75%  { transform: translateX(-14px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes fairyPulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-@keyframes wingFlutter {
-  0%, 100% {
-    transform: scaleX(0.8) scaleY(0.9);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scaleX(1.3) scaleY(1.1);
-    opacity: 1;
-  }
-}
-
-/* =========================
-   🎲 FAIRY POSITIONS
-========================= */
-
-.fairy:nth-child(1) { left: 8%;  animation-duration: 16s; }
-.fairy:nth-child(2) { left: 18%; animation-duration: 22s; animation-delay: 2s; }
-.fairy:nth-child(3) { left: 30%; animation-duration: 14s; animation-delay: 5s; }
-.fairy:nth-child(4) { left: 42%; animation-duration: 20s; animation-delay: 1s; }
-.fairy:nth-child(5) { left: 55%; animation-duration: 17s; animation-delay: 3s; }
-.fairy:nth-child(6) { left: 68%; animation-duration: 24s; animation-delay: 6s; }
-.fairy:nth-child(7) { left: 80%; animation-duration: 15s; animation-delay: 4s; }
-.fairy:nth-child(8) { left: 92%; animation-duration: 21s; animation-delay: 7s; }
+.fairy:nth-child(1) { left: 10%; animation-duration: 16s; }
+.fairy:nth-child(2) { left: 25%; animation-duration: 22s; }
+.fairy:nth-child(3) { left: 40%; animation-duration: 14s; }
+.fairy:nth-child(4) { left: 55%; animation-duration: 20s; }
+.fairy:nth-child(5) { left: 70%; animation-duration: 17s; }
+.fairy:nth-child(6) { left: 85%; animation-duration: 24s; }
