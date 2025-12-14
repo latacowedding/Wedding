@@ -3,12 +3,7 @@
 ========================= */
 
 body {
-  background: linear-gradient(
-    to bottom,
-    #0b0712 0%,
-    #120a1d 40%,
-    #090611 100%
-  );
+background: url("assets/images/enchanted-gate.png") center / cover no-repeat fixed;
 
   color: #f5e6c8;
   font-family: 'Shadows Into Light', cursive;
